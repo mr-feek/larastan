@@ -195,6 +195,15 @@ class ModelExtension
             ->first();
     }
 
+    public function testFirstFromInRandomOrder(): ?User
+    {
+        return User::with('foo')
+            ->where('foo', 'bar')
+            ->orWhere('bar', 'baz')
+            ->inRandomOrder()
+            ->first();
+    }
+
     /** @return Collection<User>|null */
     public function testFindWithCastingToArray(FormRequest $request): ?Collection
     {
